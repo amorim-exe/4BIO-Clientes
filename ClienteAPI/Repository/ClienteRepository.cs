@@ -19,7 +19,7 @@ namespace ClienteAPI.Repository
                 File.WriteAllText(_filePath, "[]");
 
             var json = File.ReadAllText(_filePath);
-            _clientes = JsonSerializer.Deserialize<List<Cliente>>(json, _opts) ?? new List<Cliente>();
+            _clientes = JsonSerializer.Deserialize<List<Cliente>>(json, _opts) ?? [];
         }
 
         public async Task<List<Cliente>> GetAllAsync()

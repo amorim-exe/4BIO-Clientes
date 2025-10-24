@@ -28,6 +28,12 @@ if (app.Environment.IsDevelopment())
     );
 }
 
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/api", permanent: false);
+    return Task.CompletedTask;
+});
+
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthorization();
