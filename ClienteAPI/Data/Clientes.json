@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "nome": "Jo\u00E3o Silva",
+    "email": "joao.silva@email.com",
+    "cpf": "12345678901",
+    "rg": "12345678",
+    "contatos": [
+      {
+        "id": 1,
+        "tipo": "Celular",
+        "ddd": 11,
+        "telefone": 987654321
+      },
+      {
+        "id": 2,
+        "tipo": "Residencial",
+        "ddd": 11,
+        "telefone": 33445566
+      }
+    ],
+    "enderecos": [
+      {
+        "id": 1,
+        "tipo": "Preferencial",
+        "cep": "01234-567",
+        "logradouro": "Rua das Flores",
+        "numero": 100,
+        "bairro": "Centro",
+        "complemento": "Apto 101",
+        "cidade": "S\u00E3o Paulo",
+        "estado": "SP",
+        "referencia": "Pr\u00F3ximo ao parque"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Maria Oliveira",
+    "email": "maria.oliveira@email.com",
+    "cpf": "98765432100",
+    "rg": "87654321",
+    "contatos": [
+      {
+        "id": 1,
+        "tipo": "Comercial",
+        "ddd": 21,
+        "telefone": 22334455
+      }
+    ],
+    "enderecos": [
+      {
+        "id": 1,
+        "tipo": "Entrega",
+        "cep": "12345-678",
+        "logradouro": "Avenida Central",
+        "numero": 200,
+        "bairro": "Jardim",
+        "complemento": "Casa",
+        "cidade": "Rio de Janeiro",
+        "estado": "RJ",
+        "referencia": "Em frente ao supermercado"
+      },
+      {
+        "id": 2,
+        "tipo": "Cobran\u00E7a",
+        "cep": "87654-321",
+        "logradouro": "Rua do Com\u00E9rcio",
+        "numero": 50,
+        "bairro": "Centro",
+        "complemento": "",
+        "cidade": "Rio de Janeiro",
+        "estado": "RJ",
+        "referencia": "Pr\u00F3ximo ao banco"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nome": "Pedro Luis",
+    "email": "pedro@luis.com",
+    "cpf": "52688399744",
+    "rg": "12345678",
+    "contatos": [
+      {
+        "id": 1,
+        "tipo": "Celular",
+        "ddd": 11,
+        "telefone": 9300238932
+      }
+    ],
+    "enderecos": [
+      {
+        "id": 1,
+        "tipo": "Preferencial",
+        "cep": "01234-567",
+        "logradouro": "Rua das Flores",
+        "numero": 100,
+        "bairro": "Centro",
+        "complemento": "Apto 101",
+        "cidade": "S\u00E3o Paulo",
+        "estado": "SP",
+        "referencia": "Pr\u00F3ximo ao parque"
+      }
+    ]
+  }
+]

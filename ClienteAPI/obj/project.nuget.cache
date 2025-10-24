@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "s0s9AtiS440=",
+  "success": true,
+  "projectFilePath": "E:\\Projetos\\DotNet\\ClienteAPI\\ClienteAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Maike\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.10\\microsoft.aspnetcore.openapi.9.0.10.nupkg.sha512",
+    "C:\\Users\\Maike\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
+    "C:\\Users\\Maike\\.nuget\\packages\\scalar.aspnetcore\\2.9.0\\scalar.aspnetcore.2.9.0.nupkg.sha512"
+  ],
+  "logs": []
+}

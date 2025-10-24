@@ -1,0 +1,78 @@
+[
+  {
+    "Id": 1,
+    "Nome": "João Silva",
+    "Email": "joao.silva@email.com",
+    "CPF": "12345678901",
+    "RG": "12345678",
+    "Contatos": [
+      {
+        "Id": 1,
+        "Tipo": "Celular",
+        "DDD": 11,
+        "Telefone": 987654321
+      },
+      {
+        "Id": 2,
+        "Tipo": "Residencial",
+        "DDD": 11,
+        "Telefone": 33445566
+      }
+    ],
+    "Enderecos": [
+      {
+        "Id": 1,
+        "Tipo": "Preferencial",
+        "CEP": "01234-567",
+        "Logradouro": "Rua das Flores",
+        "Numero": 100,
+        "Bairro": "Centro",
+        "Complemento": "Apto 101",
+        "Cidade": "São Paulo",
+        "Estado": "SP",
+        "Referencia": "Próximo ao parque"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Nome": "Maria Oliveira",
+    "Email": "maria.oliveira@email.com",
+    "CPF": "98765432100",
+    "RG": "87654321",
+    "Contatos": [
+      {
+        "Id": 1,
+        "Tipo": "Comercial",
+        "DDD": 21,
+        "Telefone": 22334455
+      }
+    ],
+    "Enderecos": [
+      {
+        "Id": 1,
+        "Tipo": "Entrega",
+        "CEP": "12345-678",
+        "Logradouro": "Avenida Central",
+        "Numero": 200,
+        "Bairro": "Jardim",
+        "Complemento": "Casa",
+        "Cidade": "Rio de Janeiro",
+        "Estado": "RJ",
+        "Referencia": "Em frente ao supermercado"
+      },
+      {
+        "Id": 2,
+        "Tipo": "Cobrança",
+        "CEP": "87654-321",
+        "Logradouro": "Rua do Comércio",
+        "Numero": 50,
+        "Bairro": "Centro",
+        "Complemento": "",
+        "Cidade": "Rio de Janeiro",
+        "Estado": "RJ",
+        "Referencia": "Próximo ao banco"
+      }
+    ]
+  }
+]
