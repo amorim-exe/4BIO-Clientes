@@ -40,7 +40,7 @@ namespace ClienteAPI.Repository
             await _locker.WaitAsync();
             try
             {
-                return _clientes.FirstOrDefault(c => c.Id == id) ?? throw new InvalidOperationException();
+                return _clientes.FirstOrDefault(c => c.Id == id);
             }
             finally
             {
