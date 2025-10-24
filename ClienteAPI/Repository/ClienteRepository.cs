@@ -6,7 +6,7 @@ namespace ClienteAPI.Repository
     public class ClienteRepository : IClienteRepository
     {
         private readonly string _filePath;
-        private List<Cliente> _clientes;
+        private readonly List<Cliente> _clientes;
         private static readonly SemaphoreSlim _locker = new(1,1);
         private readonly JsonSerializerOptions _opts = new(JsonSerializerDefaults.Web) { WriteIndented = true };
 
@@ -53,7 +53,7 @@ namespace ClienteAPI.Repository
             await _locker.WaitAsync();
             try
             {
-                cliente.Id = _clientes.Any() ? _clientes.Max(c => c.Id) + 1 : 1;
+                cliente.Id = _clientes.Count != 0 ? _clientes.Max(c => c.Id) + 1 : 1;
                 AssignNestedIds(cliente);
                 _clientes.Add(cliente);
                 await SaveAsync();
@@ -67,7 +67,20 @@ namespace ClienteAPI.Repository
         
         private async Task SaveAsync()
         {
-            await File.WriteAllTextAsync(_filePath, JsonSerializer.Serialize(_clientes, _opts));
+            var tempPath = _filePath + ".tmp";
+            await using (var fs = new FileStream(tempPath, FileMode.Create, FileAccess.Write, FileShare.None, 131072, useAsync: true))
+            {
+                await JsonSerializer.SerializeAsync(fs, _clientes, _opts);
+                await fs.FlushAsync();
+            }
+            if (File.Exists(_filePath))
+            {
+                File.Replace(tempPath, _filePath, null);
+            }
+            else
+            {
+                File.Move(tempPath, _filePath);
+            }
         }
 
         public async Task<Cliente> UpdateAsync(Cliente cliente)
@@ -75,14 +88,13 @@ namespace ClienteAPI.Repository
             await _locker.WaitAsync();
             try
             {
-                var list = await GetAllAsync();
-                var idx = list.FindIndex(x => x.Id == cliente.Id);
-                if (idx == -1) 
+                var idx = _clientes.FindIndex(x => x.Id == cliente.Id);
+                if (idx == -1)
                     return null;
-                
-                AssignNestedIds(cliente, list[idx]);
-                list[idx] = cliente;
-                await File.WriteAllTextAsync(_filePath, JsonSerializer.Serialize(list, _opts));
+
+                AssignNestedIds(cliente, _clientes[idx]);
+                _clientes[idx] = cliente;
+                await SaveAsync();
                 return cliente;
             }
             finally
@@ -96,9 +108,9 @@ namespace ClienteAPI.Repository
             await _locker.WaitAsync();
             try
             {
-                var list = await GetAllAsync();
-                var removed = list.RemoveAll(x => x.Id == id) > 0;
-                await File.WriteAllTextAsync(_filePath, JsonSerializer.Serialize(list, _opts));
+                var removed = _clientes.RemoveAll(x => x.Id == id) > 0;
+                if (removed)
+                    await SaveAsync();
                 return removed;
             }
             finally
@@ -112,7 +124,10 @@ namespace ClienteAPI.Repository
             await _locker.WaitAsync();
             try
             {
-                await File.WriteAllTextAsync(_filePath, JsonSerializer.Serialize(clientes, _opts));
+                _clientes.Clear();
+                if (clientes != null && clientes.Count > 0)
+                    _clientes.AddRange(clientes);
+                await SaveAsync();
             }
             finally
             {
@@ -120,7 +135,7 @@ namespace ClienteAPI.Repository
             }
         }
 
-        private static void AssignNestedIds(Cliente cliente, Cliente existing = null)
+        private static void AssignNestedIds(Cliente cliente, Cliente? existing = null)
         {
             cliente.Contatos ??= [];
             cliente.Enderecos ??= [];
